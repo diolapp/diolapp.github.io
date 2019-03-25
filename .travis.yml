@@ -9,10 +9,9 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
-install:
-  - npm install -g @vue/cli
 script:
-  - npm run build
+  - yarn install
+  - yarn run build
 cache:
   directories:
     - 'node_modules'
