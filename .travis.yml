@@ -22,7 +22,7 @@ deploy:
   provider: pages
   skip-cleanup: true
   local-dir: dist
-  github-token: $GITUHB_TOKEN
+  github-token: $GITHUB_TOKEN
   repo: diolapp/diolapp.github.io
   keep-history: true
   target-branch: master
