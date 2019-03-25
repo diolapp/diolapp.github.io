@@ -1,0 +1,36 @@
+{
+  "main": [
+    {
+      "to": "/",
+      "text": "Home",
+      "icon": "home"
+    },
+    {
+      "to": "/contributing",
+      "text": "Contributing",
+      "icon": "group_add"
+    }
+  ],
+
+  "secondary": [
+    {
+      "to": "/policies/privacy",
+      "text": "Privacy Policy"
+    }
+  ],
+
+  "social": [
+    {
+      "to": "https://twitter.com/diolapp",
+      "icon": "fab fa-twitter"
+    },
+    {
+      "to": "https://github.com/diolapp",
+      "icon": "fab fa-github"
+    },
+    {
+      "to": "https://gitter.im/diolapp",
+      "icon": "fab fa-gitter"
+    }
+  ]
+}
