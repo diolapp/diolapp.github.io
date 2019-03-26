@@ -9,9 +9,6 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
-before_script:
-  - yarn global add @vue/cli
-  - yarn global add @vue/cli-service
 script:
   - yarn install
   - yarn run build
