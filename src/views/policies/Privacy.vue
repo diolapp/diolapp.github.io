@@ -61,13 +61,11 @@
     <div class="pa-3">
       <h5 class="headline" id="can-i-control">Can I control what data is collected?</h5>
       <p class="body-1">
-        The answer to this question is a bit complicated. You can control whether analytics data is or is not
-        collected; however, you cannot do so directly. It would be very technically complicated, and involve cookies
-        and GDPR issues if we allowed users to opt in and out of analytics. With that said, you can still stop us
-        from collecting analytical data about your visits by simply using private mode on your web browser, or
-        many ad blockers have the ability to block Google Analytics requests. There is no fear here for ad blockers
-        either. We do not now, nor will we ever run ads on this site, and we will never add anti-ad blocker scripts
-        to this site. We believe in being open and honest, and you can make the decision that is best for you.
+        Absolutely, since the only data we collect is Google Analytics, when you first visit our website, you will
+        get a dialog popup asking you if you want to allow analytics. If you selected <code>Privacy Policy</code>
+        and ended up here, and you do want to allow analytics, then you can do so from the menu on the navbar or form
+        the hamburger menu on mobile. While it isn't in any way required, and we aren't asking you to, if you agree to
+        allow analytics, we very much greatly appreciate it.
       </p>
     </div>
   </DefaultLayout>

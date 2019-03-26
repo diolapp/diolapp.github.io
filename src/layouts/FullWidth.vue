@@ -24,6 +24,7 @@
           <v-icon v-show="link.icon">{{ link.icon }}</v-icon>
           &nbsp;{{ link.text }}
         </v-btn>
+        <menu-large-screens />
       </v-toolbar-items>
 
       <!--
@@ -40,10 +41,11 @@
       -->
     </v-toolbar>
 
-    <v-content fluid class="content pa-0">
+    <v-content class="content pa-0">
         <slot />
 
         <to-top-fab />
+        <gdpr-dialog />
     </v-content>
 
     <v-footer app dark height="auto" color="secondary" class="d-flex">
@@ -74,13 +76,17 @@
 </template>
 
 <script>
-import ToTopFab from '@/components/ToTopFab.vue'
+import GDPRDialog from '@/components/GDPR.vue';
+import MenuLarge from '@/components/MenuLarge.vue';
+import ToTopFab from '@/components/ToTopFab.vue';
 import navigations from '@/data/navigation.json';
 import { setTimeout } from 'timers';
 
 export default {
   name: 'default-layout',
   components: {
+    'gdpr-dialog': GDPRDialog,
+    'menu-large-screens': MenuLarge,
     'to-top-fab': ToTopFab,
   },
   computed: {
