@@ -8,3 +8,13 @@
     </v-responsive>
   </FullWidthLayout>
 </template>
+
+<script>
+export default {
+  name: '404',
+  metaInfo: {
+    title: '404',
+  },
+};
+</script>
+

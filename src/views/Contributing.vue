@@ -146,3 +146,13 @@
     </div>
   </DefaultLayout>
 </template>
+
+<script>
+export default {
+  name: 'Contributing',
+  metaInfo: {
+    title: 'Contributing',
+  },
+};
+</script>
+

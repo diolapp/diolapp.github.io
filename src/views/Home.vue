@@ -75,6 +75,9 @@ export default {
       puns: 'bad',
     };
   },
+  metaInfo: {
+    title: 'Home',
+  },
   methods: {
     togglePuns() {
       if (this.puns === 'bad') {
