@@ -121,7 +121,10 @@ typings/
 .nuxt
 
 # vuepress build output
-.vuepress/dist
+.vuepress/
+
+# vuejs build output
+dist/
 
 # Serverless directories
 .serverless/
