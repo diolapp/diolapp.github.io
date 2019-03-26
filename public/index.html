@@ -4,8 +4,35 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>diolapp.github.io</title>
+
+    <!-- Standard Favicon and ico fallback for IE -->
+    <link rel="icon" href="<%= BASE_URL =>favicon/favicon.png" sizes="32x32">
+    <link rel="icon" href="<%= BASE_URL =>favicon/favicon.ico" sizes="16x16 24x24 32x32 48x48 64x64">
+
+    <!-- Android -->
+    <!-- Chrome -->
+    <link rel="icon" sizes="192x192" href="<%= BASE_URL %>favicon/touch-icon-192x192.png">
+    <link rel="shortcut icon" sizes="196x196" href="<%= BASE_URL =>favicon/favicon-196.png">
+    
+    <!-- Apple Touch Icons -->
+    <!-- YES, I know, this is a website for an Android app, but friendly web design is good web design -->
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="<%= BASE_URL =>favicon/apple-touch-icon-180x180-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="<%= BASE_URL =>favicon/apple-touch-icon-152x152-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="<%= BASE_URL =>favicon/apple-touch-icon-120x120-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="<%= BASE_URL =>favicon/apple-touch-icon-76x76-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="<%= BASE_URL %>favicon/apple-touch-icon-precompsed.png">
+
+    <!-- Microsoft -->
+    <!-- Windows 10 (Edge) -->
+    <meta name="msapplication-TileColor" content="#282A2B">
+    <meta name="msapplication-TileImage" content="<%= BASE_URL %>favicon/favicon-144.png">
+    <!-- Windows 8.1 (IE 11) -->
+    <meta name="application-name" content="Diol">
+    <meta name="msapplication-tooltip" content="Diol Android app website">
+    <meta name="msapplication-config" content="<%= BASE_URL %>favicon/ieconfig.xml">
+    
+    <title>Diol</title>
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
   </head>
