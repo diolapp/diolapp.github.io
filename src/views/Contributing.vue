@@ -26,7 +26,7 @@
         </p>
         <v-layout align-center wrap row>
           <v-flex xs12 md6>
-            <v-btn flat large disabled>
+            <v-btn flat large href="https://github.com/diolapp/Diol/releases">
               <v-icon left>fab fa-github</v-icon>
               Access the Github alpha/beta releases
             </v-btn>
@@ -53,7 +53,7 @@
         </p>
         <v-layout align-center wrap row>
           <v-flex xs-12 md-6>
-            <v-btn flat large disabled>
+            <v-btn flat large href="https://github.com/diolapp/Diol/issues">
               <v-icon left>bug_report</v-icon>
               Github issues
             </v-btn>
@@ -96,13 +96,13 @@
 
         <v-layout align-center wrap row>
           <v-flex xs-12 md-6>
-            <v-btn flat large disabled>
+            <v-btn flat large href="https://github.com/diolapp/Diol">
               <v-icon left>fab fa-github</v-icon>
               Github Repository
             </v-btn>
           </v-flex>
           <v-flex xs-12 md-6>
-            <v-btn flat large disabled>
+            <v-btn flat large href="https://gitter.im/diolapp">
               <v-icon left>fab fa-gitter</v-icon>
               Gitter Chat
             </v-btn>
