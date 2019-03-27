@@ -1,9 +1,9 @@
 <template>
-  <FullWidthLayout>
-    <div class="content pa-5 default-layout">
+  <full-width-layout>
+    <div class="grow pa-3 margin-top">
       <slot />
     </div>
-  </FullWidthLayout>
+  </full-width-layout>
 </template>
 
 <script>
@@ -13,7 +13,7 @@ export default {
 </script>
 
 <style lang="scss">
-.default-layout {
+.margin-top {
   margin-top: 4rem !important;
 }
 </style>

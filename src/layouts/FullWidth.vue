@@ -1,131 +1,74 @@
 <template>
   <v-app class="app">
-    <v-navigation-drawer v-model="$store.state.drawerOpen" temporary app dark color="secondary">
-      <v-list>
-        <v-list-tile v-for="(link, index) in main" :key="index" :to="link.to">
-          <v-list-tile-action v-if="link.icon">
-            <v-icon>{{ link.icon }}</v-icon>
-          </v-list-tile-action>
-
-          <v-list-tile-content>
-            <v-list-tile-title>{{ link.text }}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
+    <v-navigation-drawer class="flex-column secondary pa-0 py-1" v-model="drawerOpen" disable-resize-watcher disable-route-watcher temporary app dark>
+      <drawer-content />
     </v-navigation-drawer>
 
     <v-toolbar app dark scroll-off-screen color="secondary">
-      <v-toolbar-side-icon class="hidden-md-and-up" @click="$store.commit('toggleDrawer')"></v-toolbar-side-icon>
+       <!-- We only show the side icon on small devices, otherwise navigation is duplicated -->
+      <v-toolbar-side-icon class="hidden-md-and-up" @click="drawerOpen = true"></v-toolbar-side-icon>
 
+      <!-- Add a spacer so the navigation goes to the right -->
       <v-spacer></v-spacer>
 
-      <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn flat v-for="(link, index) in main" :to="link.to" :key="index">
+      <v-toolbar-items>
+        <!-- Main navigation for larger screens -->
+        <v-btn class="hidden-sm-and-down" flat v-for="(link, index) in links" :to="link.to" :key="index">
           <v-icon v-show="link.icon">{{ link.icon }}</v-icon>
           &nbsp;{{ link.text }}
         </v-btn>
-        <menu-large-screens />
-      </v-toolbar-items>
 
-      <!--
-        <v-toolbar-items>
-          <v-btn flat icon @click.prevent="toggleSearch">
-            <v-icon>search</v-icon>
-          </v-btn>
-          <v-expand-x-transition>
-            <div v-show="searchOpen">
-              <v-text-field ref="searchField" id="search-field" @keydown.escape="toggleSearch" v-model="searchText" hide-details single-line clearable></v-text-field>
-            </div>
-          </v-expand-x-transition>
-        </v-toolbar-items>
-      -->
+        <!-- Dropdown menu containing the analytics toggle -->
+        <toolbar-dropdown-menu />
+
+        <!-- Search menu, not implemented yet, so we'll just leave it commented out -->
+        <!-- <toolbar-search /> -->
+      </v-toolbar-items>
     </v-toolbar>
 
-    <v-content class="content pa-0">
+    <v-content class="grow pa-0">
         <slot />
 
         <to-top-fab />
-        <gdpr-dialog />
+        <analytics-dialog />
     </v-content>
 
     <v-footer app dark height="auto" color="secondary" class="d-flex">
-      <v-card flat tile class="flex lighen-1 white--text text-xs-center">
-        <v-card-text class="pb-0">
-          <v-btn v-for="(link, index) in social" :key="index" :href="link.to" target="_blank" class="mx-3 white--text" icon>
-            <v-icon size="24px">{{ link.icon }}</v-icon>
-          </v-btn>
-        </v-card-text>
-        <v-card-text class="pa-0">
-          <v-btn v-for="(link, index) in secondary" :key="index" :to="link.to" color="white" flat>
-            {{ link.text }}
-          </v-btn>
-        </v-card-text>
-
-        <v-divider></v-divider>
-
-        <v-card-text class="white--text">
-          Copyright &copy; {{ currentYear }} The Diol App Team.
-          <br class="hidden-md-and-up" />
-          Made with <a class="unstyled-link" href="https://vuejs.org/" target="_blank">Vue</a>
-          and <a class="unstyled-link" href="https://vuetifyjs.com/" target="_blank">Vuetify</a>.
-          Hosted on <a class="unstyled-link" href="https://pages.github.com/" target="_blank">Github Pages</a>.
-        </v-card-text>
-      </v-card>
+      <footer-content />
     </v-footer>
   </v-app>
 </template>
 
 <script>
-import GDPRDialog from '@/components/GDPR.vue';
-import MenuLarge from '@/components/MenuLarge.vue';
+import AnalyticsDialog from '@/components/AnalyticsDialog.vue';
+import DrawerContent from '@/components/DrawerContent.vue';
+import FooterContent from '@/components/FooterContent.vue';
+import ToolbarDropdownMenu from '@/components/ToolbarDropdownMenu.vue';
+import ToolbarSearch from '@/components/ToolbarSearch.vue';
 import ToTopFab from '@/components/ToTopFab.vue';
 import navigations from '@/data/navigation.json';
-import { setTimeout } from 'timers';
 
 export default {
-  name: 'default-layout',
+  name: 'full-width-layout',
   components: {
-    'gdpr-dialog': GDPRDialog,
-    'menu-large-screens': MenuLarge,
-    'to-top-fab': ToTopFab,
+    AnalyticsDialog,
+    DrawerContent,
+    FooterContent,
+    ToolbarDropdownMenu,
+    ToolbarSearch,
+    ToTopFab,
   },
   computed: {
     currentYear() {
+      console.log(this.$vuetify.breakpoint);
       return new Date().getFullYear();
     },
-    drawerOpen() {
-      return this.$store.state.drawerOpen;
-    }
   },
   data() {
     return {
-      main: navigations.main,
-      secondary: navigations.secondary,
-      social: navigations.social,
-      searchText: '',
-      searchOpen: false,
+      links: navigations.main,
+      drawerOpen: false,
     };
-  },
-  methods: {
-    toggleSearch(e) {
-      if (this.searchOpen) {
-        return this.hideSearch(e);
-      }
-
-      return this.expandSearch();
-    },
-
-    expandSearch() {
-      this.searchOpen = true;
-      setTimeout(() => document.addEventListener('click', this.hideSearch), 0);
-      this.$nextTick(this.$refs.searchField.focus);
-    },
-
-    hideSearch(e) {
-      if ((document.activeElement === document.getElementById('search-field')) && e.type !== 'keydown') return;
-      this.searchOpen = false;
-      document.removeEventListener('click', this.hideSearch);
-    },
   },
 };
 </script>
@@ -133,12 +76,16 @@ export default {
 <style lang="scss">
 @import "@/assets/styles/main.scss";
 
-.app {
+.app, .flex-column {
   display: flex;
   flex-direction: column;
 }
 
-.content, .v-content {
+.fill-height {
+  height: 100vh;
+}
+
+.grow {
   flex-grow: 1;
 }
 

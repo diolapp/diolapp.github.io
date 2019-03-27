@@ -1,31 +1,30 @@
 /* eslint-disable no-param-reassign */
 
+import createPersistedState from 'vuex-persistedstate';
 import Vue from 'vue';
 import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  plugins: [createPersistedState()],
   state: {
-    drawerOpen: false,
-    showGDPR: true,
+    showAnalyticsPrompt: true,
     analyticsEnabled: false,
   },
   mutations: {
     setAnalyticsEnabled(state, status) {
       state.analyticsEnabled = status;
+      if (status === true) Vue.$ga.enable();
+      else Vue.$ga.disable();
     },
-    toggleDrawer(state) {
-      state.drawerOpen = true;
-    },
-    toggleGDPR(state) {
-      state.showGDPR = !state.showGDPR;
+    toggleShowAnalyticsPrompt(state) {
+      state.showAnalyticsPrompt = !state.showAnalyticsPrompt;
     },
     toggleAnalyticsEnabled(state) {
       state.analyticsEnabled = !state.analyticsEnabled;
+      if (state.analyticsEnabled === true) Vue.$ga.enable();
+      else Vue.$ga.disable();
     },
-  },
-  actions: {
-
   },
 });

@@ -1,5 +1,5 @@
 <template>
-  <FullWidthLayout>
+  <full-width-layout>
     <v-responsive min-height="100vh" min-width="100vw" class="intro text-xs-center secondary white--text ma-0 pa-0">
       <v-img class="center-image" src="/images/logo.png" max-height="35vh" max-width="35vh" contain alt="Diol Logo" />
       <h1 class="display-4">Diol</h1>
@@ -64,7 +64,7 @@
         </v-flex>
       </v-layout>
     </v-responsive>
-  </FullWidthLayout>
+  </full-width-layout>
 </template>
 
 <script>

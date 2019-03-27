@@ -1,5 +1,5 @@
 import '@babel/polyfill';
-import '@fortawesome/fontawesome-free/js/all'; // eslint-disable-line
+import '@fortawesome/fontawesome-free/js/all';
 import Vue from 'vue';
 import Analytics from 'vue-analytics';
 import Meta from 'vue-meta';
@@ -19,7 +19,7 @@ Vue.component('DefaultLayout', DefaultLayout);
 Vue.use(Analytics, {
   id: 'UA-136790235-1',
   router,
-  disabled: true,
+  disabled: Promise.resolve(store.state.analyticsEnabled),
   debug: {
     sendHitTask: process.env.NODE_ENV === 'production',
   },

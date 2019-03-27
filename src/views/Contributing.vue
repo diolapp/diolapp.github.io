@@ -1,5 +1,5 @@
 <template>
-  <DefaultLayout>
+  <default-layout>
 
     <div class="pa-3">
       <h3 class="display-2 pb-2">Contributing to the code</h3>
@@ -144,7 +144,7 @@
         </v-flex>
       </v-layout>
     </div>
-  </DefaultLayout>
+  </default-layout>
 </template>
 
 <script>
